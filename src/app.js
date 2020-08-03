@@ -1,6 +1,7 @@
 import YAML from 'js-yaml';
+import { documentReady } from 'html-ready';
 
-window.addEventListener('load', () => {
+documentReady.then(() => {
   const yamlInput = document.querySelector('#yaml-input');
   const yamlOutput = document.querySelector('#yaml-output');
   const yamlError = document.querySelector('#yaml-error');
