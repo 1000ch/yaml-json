@@ -1,5 +1,5 @@
-import YAML from 'js-yaml';
-import { documentReady } from 'html-ready';
+import YAML from 'https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.mjs';
+import {documentReady} from 'https://unpkg.com/html-ready';
 
 documentReady.then(() => {
   const yamlInput = document.querySelector('#yaml-input');
@@ -8,7 +8,7 @@ documentReady.then(() => {
 
   yamlInput.addEventListener('input', () => {
     try {
-      const yaml = YAML.safeLoad(yamlInput.value);
+      const yaml = YAML.load(yamlInput.value);
       yamlOutput.value = JSON.stringify(yaml, null, 2);
       yamlError.textContent = '';
     } catch (error) {
@@ -23,8 +23,8 @@ documentReady.then(() => {
   jsonInput.addEventListener('input', () => {
     try {
       const json = JSON.parse(jsonInput.value);
-      jsonOutput.value = YAML.safeDump(json, {
-        indent: 2
+      jsonOutput.value = YAML.dump(json, {
+        indent: 2,
       });
       jsonError.textContent = '';
     } catch (error) {
